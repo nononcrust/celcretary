@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<a href="https://celcretary.vercel.app
+">
+<img alt="경비서 - 인간관계까지 케어해주는 경조사 관리 서비스" src="https://raw.githubusercontent.com/nononcrust/celcretary/main/public/images/og-image.jpg">
 
-## Getting Started
+  <h1 align="center">경비서</h1>
+</a>
 
-First, run the development server:
+<p align="center">
+  인간관계까지 케어해주는 경조사 관리 서비스
+</p>
 
-```bash
+<p align="center">
+  <a href="#introduction"><strong>소개</strong></a> ·
+  <a href="#local-development"><strong>로컬 개발 환경</strong></a> ·
+  <a href="#tech-stack"><strong>기술 스택</strong></a>
+</p>
+<br/>
+
+## 소개
+
+인간관계까지 케어해주는 경조사 관리 서비스, 경비서의 웹 서비스입니다.
+
+## 로컬 개발 환경
+
+경비서를 로컬에서 개발하려면, .env.example에 포함된 모든 환경 변수를 설정해야 합니다.
+
+모든 환경 변수를 설정했다면 다음 커맨드를 입력해 로컬 환경에서 앱을 실행할 수 있습니다.
+
+```
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 기술 스택
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Next.js](https://nextjs.org/) – 프레임워크
+- [TypeScript](https://www.typescriptlang.org/) – 언어
+- [Tailwind](https://tailwindcss.com/) – 스타일
+- [Vercel](https://vercel.com/) – 배포
