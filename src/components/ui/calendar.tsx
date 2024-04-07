@@ -55,10 +55,7 @@ export const Calendar = ({
             "w-full h-[38px] text-accents-2 font-normal m-0 flex items-center justify-center p-0",
           row: "flex w-full mt-2 border-b",
           cell: "relative rounded-md p-0 text-center focus-within:relative w-full h-[70px]",
-          day: cn(
-            "h-8 w-8 rounded-full p-0 text-center outline-none transition-all",
-            "focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-opacity-50",
-          ),
+          day: cn("h-8 w-8 rounded-full p-0 text-center outline-none transition-all", "focus-ring"),
           day_outside: "text-accents-4 aria-selected:text-white",
           day_disabled: "text-accents-4 pointer-events-none bg-accents-5",
           day_hidden: "invisible",

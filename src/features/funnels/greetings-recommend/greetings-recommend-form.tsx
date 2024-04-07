@@ -9,11 +9,10 @@ import { Card } from "@/components/ui/card";
 import { Divider } from "@/components/ui/divider";
 import { SectionTitle } from "@/components/ui/section-title";
 import { Title } from "@/components/ui/title";
+import { ROUTE } from "@/constants/route";
 import { useGreetingsRecommendFunnelContext } from "@/features/funnels/greetings-recommend/context";
 import { EVENT_TYPE_LABEL, EventType } from "@/services/shared";
 import { useRouter } from "next/navigation";
-
-const FUNNEL_STEP = "form";
 
 const DUMMY_RELATIONSHIP = ["친한 친구", "친구", "직장 동료", "상사", "가족", "기타 관계"];
 
@@ -42,12 +41,10 @@ export const GreetingsRecommendForm = () => {
 
   const canSubmit = selectedRelationship && selectedEventType;
 
-  if (funnel.current !== FUNNEL_STEP) return null;
-
   return (
     <main className="px-4">
       <Header className="justify-end">
-        <Header.Close onClick={() => router.push("/")} />
+        <Header.Close onClick={() => router.push(ROUTE.HOME)} />
       </Header>
       <Title className="mt-5">{"경조사의\n인사말을 추천해드릴게요"}</Title>
       <SectionTitle className="mt-10">나와의 관계</SectionTitle>

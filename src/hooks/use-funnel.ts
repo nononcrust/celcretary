@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export const useFunnel = (steps: string[]) => {
-  const [currentStep, setCurrentStep] = useState(steps[0]);
+export const useFunnel = <T>(steps: readonly T[]) => {
+  const [currentStep, setCurrentStep] = useState<T>(steps[0]);
 
   const nextStep = () => {
     const currentIndex = steps.indexOf(currentStep);

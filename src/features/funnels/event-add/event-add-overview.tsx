@@ -11,12 +11,14 @@ import { EVENT_TYPE_LABEL } from "@/services/shared";
 import { format } from "date-fns";
 
 export const EventAddOverview = () => {
-  const { funnel, eventType, name, time, date, priority } = useEventAddFunnelContext();
+  const { funnel, form } = useEventAddFunnelContext();
 
   const onConfirm = async () => {
     // TODO: 경조사 추가
     funnel.next();
   };
+
+  const { name, date, time, type, priority } = form.getValues();
 
   return (
     <div className="mt-5 flex flex-1 flex-col justify-between">
@@ -24,8 +26,8 @@ export const EventAddOverview = () => {
         <Title className="text-[26px]">경조사 등록 전 확인해주세요</Title>
         <Card className="mt-10">
           <Card.Content>
-            <p className="text-accents-5 text-[20px] font-semibold">{name}</p>
-            <div className="text-accents-5 mt-[18px] flex gap-4 font-medium">
+            <p className="text-[20px] font-semibold text-accents-5">{name}</p>
+            <div className="mt-[18px] flex gap-4 font-medium text-accents-5">
               {date && (
                 <p className="flex items-center">
                   <Icon.Calendar className="mr-2 w-5" />
@@ -40,7 +42,7 @@ export const EventAddOverview = () => {
             <Divider className="mt-3" />
             <div className="mt-5 flex items-center">
               <p className="mr-8 font-medium">이벤트 종류</p>
-              <Badge>{EVENT_TYPE_LABEL[eventType as keyof typeof EVENT_TYPE_LABEL]}</Badge>
+              <Badge>{EVENT_TYPE_LABEL[type as keyof typeof EVENT_TYPE_LABEL]}</Badge>
             </div>
             <div className="mt-5 flex items-center">
               <p className="mr-8 font-medium">이벤트 중요도</p>

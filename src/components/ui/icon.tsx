@@ -1,3 +1,5 @@
+import Kakao from "@/assets/icons/kakao.svg";
+
 import {
   ArrowRight,
   BarChart,
@@ -64,4 +66,5 @@ export const Icon = {
   User,
   UserSquare2,
   X,
+  Kakao,
 } as const;

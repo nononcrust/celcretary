@@ -1,3 +1,5 @@
+"use client";
+
 import { CTAContainer } from "@/components/layouts/cta-container";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";

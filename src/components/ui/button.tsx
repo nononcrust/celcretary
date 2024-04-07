@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { Slot, Slottable } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
@@ -6,8 +8,8 @@ import React from "react";
 const buttonVariants = cva(
   cn(
     "inline-flex items-center justify-center whitespace-nowrap rounded-[8px] transition font-semibold border overflow-hidden",
-    "ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-    "disabled:bg-accents-0 disabled:text-accents-5 disabled:border-accents-0 disabled:pointer-events-none",
+    "focus-ring",
+    "disabled:bg-accents-0 disabled:text-accents-4 disabled:border-accents-0 disabled:pointer-events-none",
   ),
   {
     variants: {

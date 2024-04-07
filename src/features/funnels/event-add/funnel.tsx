@@ -1,64 +1,73 @@
 "use client";
 
-import { Icon } from "@/components/ui/icon";
-import { IconButton } from "@/components/ui/icon-button";
+import { Header } from "@/components/layouts/header";
+import { Form } from "@/components/ui/form";
 import { ROUTE } from "@/constants/route";
-import {
-  EventAddFunnelContextProvider,
-  useEventAddFunnelContext,
-} from "@/features/funnels/event-add/context";
+import { EventAddFunnelContextProvider } from "@/features/funnels/event-add/context";
 import { EventAddComplete } from "@/features/funnels/event-add/event-add-complete";
 import { EventAddDate } from "@/features/funnels/event-add/event-add-date";
 import { EventAddFriend } from "@/features/funnels/event-add/event-add-friend";
 import { EventAddName } from "@/features/funnels/event-add/event-add-name";
 import { EventAddOverview } from "@/features/funnels/event-add/event-add-overview";
 import { EventAddPriority } from "@/features/funnels/event-add/event-add-priority";
-import { EventAddType } from "@/features/funnels/event-add/event-add-type";
+import { useFunnel } from "@/hooks/use-funnel";
 import { cn } from "@/lib/utils";
+import { PRIORITY } from "@/services/shared";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { EventAddType } from "./event-add-type";
 
-const STEPS = ["type", "name", "date", "friend", "priority", "overview", "complete"];
+const STEPS = ["type", "name", "date", "friend", "priority", "overview", "complete"] as const;
+
+const formSchema = z.object({
+  type: z.string().min(1),
+  name: z.string().min(1),
+  priority: z.enum([Object.values(PRIORITY)[0], ...Object.values(PRIORITY).slice(1), ""]),
+  date: z.date(),
+  time: z.string().min(1),
+});
+
+export type FormSchema = z.infer<typeof formSchema>;
 
 export const EventAddFunnel = () => {
-  return (
-    <EventAddFunnelContextProvider steps={STEPS}>
-      <PageHeader />
-      <FunnelList />
-    </EventAddFunnelContextProvider>
-  );
-};
-
-const FunnelList = () => {
-  const { funnel } = useEventAddFunnelContext();
-
-  return (
-    <>
-      {funnel.current === "type" && <EventAddType />}
-      {funnel.current === "name" && <EventAddName />}
-      {funnel.current === "date" && <EventAddDate />}
-      {funnel.current === "friend" && <EventAddFriend />}
-      {funnel.current === "priority" && <EventAddPriority />}
-      {funnel.current === "overview" && <EventAddOverview />}
-      {funnel.current === "complete" && <EventAddComplete />}
-    </>
-  );
-};
-
-const PageHeader = () => {
-  const { funnel } = useEventAddFunnelContext();
-
+  const funnel = useFunnel(STEPS);
   const router = useRouter();
 
+  const form = useForm<FormSchema>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      type: "",
+      name: "",
+      priority: "",
+      time: "",
+    },
+  });
+
+  const onSubmit = form.handleSubmit((data) => {
+    console.log(data);
+  });
+
   return (
-    <div className={cn("flex justify-between", !funnel.canMoveToPrevious && "justify-end")}>
-      {funnel.canMoveToPrevious && (
-        <IconButton size="large" onClick={funnel.previous}>
-          <Icon.ChevronLeft />
-        </IconButton>
-      )}
-      <IconButton size="large" onClick={() => router.push(ROUTE.HOME)}>
-        <Icon.X />
-      </IconButton>
-    </div>
+    <EventAddFunnelContextProvider funnel={funnel} form={form}>
+      <div className="px-4">
+        <Header className={cn(!funnel.canMoveToPrevious && "justify-end")}>
+          {funnel.canMoveToPrevious && <Header.Previous onClick={funnel.previous} />}
+          <Header.Close onClick={() => router.push(ROUTE.HOME)} />
+        </Header>
+        <Form {...form}>
+          <form onSubmit={onSubmit}>
+            {funnel.current === "type" && <EventAddType />}
+            {funnel.current === "name" && <EventAddName />}
+            {funnel.current === "date" && <EventAddDate />}
+            {funnel.current === "friend" && <EventAddFriend />}
+            {funnel.current === "priority" && <EventAddPriority />}
+            {funnel.current === "overview" && <EventAddOverview />}
+            {funnel.current === "complete" && <EventAddComplete />}
+          </form>
+        </Form>
+      </div>
+    </EventAddFunnelContextProvider>
   );
 };

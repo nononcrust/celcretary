@@ -1,7 +1,5 @@
-<a href="https://celcretary.vercel.app
-">
-<img alt="경비서 - 인간관계까지 케어해주는 경조사 관리 서비스" src="https://raw.githubusercontent.com/nononcrust/celcretary/main/public/images/og-image.jpg">
-
+<a href="https://celcretary.vercel.app">
+<img alt="경비서 - 인간관계까지 케어해주는 경조사 관리 서비스" src="https://github.com/nononcrust/celcretary/blob/main/public/images/og-image.jpg?raw=true">
   <h1 align="center">경비서</h1>
 </a>
 

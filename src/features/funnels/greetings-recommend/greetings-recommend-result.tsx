@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Icon } from "@/components/ui/icon";
 import { SectionTitle } from "@/components/ui/section-title";
-import { useGreetingsRecommendFunnelContext } from "@/features/funnels/greetings-recommend/context";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -19,11 +18,7 @@ const DUMMY_GREETINGS = [
   "생신 축하드립니다. 오늘 하루 행복하게 보내세요.",
 ];
 
-const FUNNEL_STEP = "result";
-
 export const GreetingsRecommendResult = () => {
-  const { funnel } = useGreetingsRecommendFunnelContext();
-
   // const { data } = useGenerateGreetingsByCategory({
   //   eventPriority: PRIORITY.CRUCIAL,
   //   eventType: EVENT_TYPE.BIRTHDAY,
@@ -33,8 +28,6 @@ export const GreetingsRecommendResult = () => {
   const data = {
     greetings: DUMMY_GREETINGS,
   };
-
-  if (funnel.current !== FUNNEL_STEP) return null;
 
   return (
     <main>

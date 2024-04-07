@@ -1,8 +1,8 @@
 "use client";
 
-import { Funnel, useFunnel } from "@/hooks/use-funnel";
+import { Funnel } from "@/hooks/use-funnel";
 import { EventType } from "@/services/shared";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 
 type GreetingsRecommendFunnelContextValue = {
   funnel: Funnel;
@@ -21,37 +21,16 @@ type GreetingsRecommendFunnelContextValue = {
 export const GreetingsRecommendFunnelContext =
   createContext<GreetingsRecommendFunnelContextValue | null>(null);
 
-interface GreetingsRecommendFunnelContextProviderProps {
+interface GreetingsRecommendFunnelContextProviderProps
+  extends GreetingsRecommendFunnelContextValue {
   children: React.ReactNode;
-
-  steps: string[];
 }
 
 export const GreetingsRecommendFunnelContextProvider = ({
   children,
-  steps,
+  ...props
 }: GreetingsRecommendFunnelContextProviderProps) => {
-  const funnel = useFunnel(steps);
-
-  const [selectedRelationship, setSelectedRelationship] = useState<string | null>(null);
-  const [selectedEventType, setSelectedEventType] = useState<EventType | null>(null);
-  const [selectedFamily, setSelectedFamily] = useState<string | null>(null);
-  const [selectedEtcRelationship, setSelectedEtcRelationship] = useState<string | null>(null);
-  const [selectedEtcEventType, setSelectedEtcEventType] = useState<string | null>(null);
-
-  const value = {
-    funnel,
-    selectedRelationship,
-    setSelectedRelationship,
-    selectedEventType,
-    setSelectedEventType,
-    selectedFamily,
-    setSelectedFamily,
-    selectedEtcRelationship,
-    setSelectedEtcRelationship,
-    selectedEtcEventType,
-    setSelectedEtcEventType,
-  };
+  const value = props;
 
   return (
     <GreetingsRecommendFunnelContext.Provider value={value}>

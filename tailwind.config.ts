@@ -3,11 +3,7 @@ import colors from "tailwindcss/colors";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -30,6 +26,7 @@ const config: Config = {
         "green-light": "#EFF1B1",
         "gray-subtle": "#F2F4F7",
         ring: colors.orange[200],
+        kakao: "#FEE500",
       },
       maxWidth: {
         main: "480px",

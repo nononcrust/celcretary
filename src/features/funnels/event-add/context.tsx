@@ -1,55 +1,26 @@
 "use client";
 
-import { Funnel, useFunnel } from "@/hooks/use-funnel";
-import { Priority } from "@/services/shared";
-import { createContext, useContext, useState } from "react";
+import { Funnel } from "@/hooks/use-funnel";
+import { createContext, useContext } from "react";
+import { useForm } from "react-hook-form";
+import { FormSchema } from "./funnel";
 
 type EventAddFunnelContextValue = {
+  form: ReturnType<typeof useForm<FormSchema>>;
   funnel: Funnel;
-  eventType: string;
-  name: string;
-  priority: Priority | "";
-  date?: Date;
-  time: string;
-  setEventType: (eventType: string) => void;
-  setName: (name: string) => void;
-  setPriority: (priority: Priority | "") => void;
-  setDate: (date?: Date) => void;
-  setTime: (time: string) => void;
 };
 
 export const EventAddFunnelContext = createContext<EventAddFunnelContextValue | null>(null);
 
-interface EventAddFunnelContextProviderProps {
+interface EventAddFunnelContextProviderProps extends EventAddFunnelContextValue {
   children: React.ReactNode;
-  steps: string[];
 }
 
 export const EventAddFunnelContextProvider = ({
-  steps,
   children,
+  ...props
 }: EventAddFunnelContextProviderProps) => {
-  const funnel = useFunnel(steps);
-
-  const [eventType, setEventType] = useState<string>("");
-  const [name, setName] = useState<string>("");
-  const [priority, setPriority] = useState<Priority | "">("");
-  const [date, setDate] = useState<Date>();
-  const [time, setTime] = useState<string>("");
-
-  const value = {
-    funnel,
-    eventType,
-    name,
-    priority,
-    date,
-    time,
-    setEventType,
-    setName,
-    setPriority,
-    setDate,
-    setTime,
-  };
+  const value = props;
 
   return <EventAddFunnelContext.Provider value={value}>{children}</EventAddFunnelContext.Provider>;
 };

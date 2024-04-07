@@ -7,7 +7,7 @@ export const Subtitle = React.forwardRef<HTMLHeadingElement, SubtitleProps>(
   ({ className, children, ...props }, ref) => {
     return (
       <p
-        className={cn("text-accents-4 mt-2 whitespace-pre-wrap text-[18px] font-medium", className)}
+        className={cn("mt-2 whitespace-pre-wrap text-[18px] font-medium text-accents-4", className)}
         ref={ref}
         {...props}
       >

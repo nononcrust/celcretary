@@ -6,7 +6,7 @@ interface HeaderProps extends React.ComponentPropsWithoutRef<"nav"> {}
 
 const HeaderImpl = ({ children, className, ...props }: HeaderProps) => {
   return (
-    <nav className={cn("flex h-[52px] items-center justify-between", className)} {...props}>
+    <nav className={cn("mt-11 flex h-[52px] items-center justify-between", className)} {...props}>
       {children}
     </nav>
   );
