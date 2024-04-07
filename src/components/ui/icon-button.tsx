@@ -4,10 +4,7 @@ import { VariantProps, cva } from "class-variance-authority";
 import React from "react";
 
 const iconButtonVariants = cva(
-  cn(
-    "inline-flex justify-center items-center border border-transparent rounded-md",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-ring",
-  ),
+  cn("inline-flex justify-center items-center border border-transparent rounded-md", "focus-ring"),
   {
     variants: {
       size: {

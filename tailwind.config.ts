@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import colors from "tailwindcss/colors";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
@@ -28,6 +29,7 @@ const config: Config = {
         "green-subtle": "#FAFAE5",
         "green-light": "#EFF1B1",
         "gray-subtle": "#F2F4F7",
+        ring: colors.orange[200],
       },
       maxWidth: {
         main: "480px",

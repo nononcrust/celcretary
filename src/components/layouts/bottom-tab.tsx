@@ -71,7 +71,7 @@ const BottomTabItem = ({ item, isActive }: BottomTabItemProps) => {
     <Link
       href={item.href}
       className={cn(
-        "text-accents-4 flex h-[42px] w-[58px] flex-col items-center",
+        "text-accents-4 focus-ring flex h-[42px] w-[58px] flex-col items-center rounded-md",
         isActive && "text-primary",
       )}
     >

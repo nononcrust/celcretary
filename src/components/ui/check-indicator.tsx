@@ -9,8 +9,8 @@ export const CheckIndicator = ({ className, checked, ...props }: CheckIndicatorP
   return (
     <div
       className={cn(
-        "border-accents-1 flex h-6 min-w-6 items-center justify-center rounded-full border-[1.5px] bg-white",
-        checked && "border-yellow-light bg-primary text-white",
+        "border-accents-1 flex h-6 min-w-6 items-center justify-center rounded-full border-[1.5px] bg-white text-white transition",
+        checked && "border-yellow-light bg-primary",
         className,
       )}
       {...props}
