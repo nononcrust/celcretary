@@ -1,3 +1,5 @@
+import AvatarFemale from "@/assets/icons/avatar-female.svg";
+import AvatarMale from "@/assets/icons/avatar-male.svg";
 import Kakao from "@/assets/icons/kakao.svg";
 
 import {
@@ -67,4 +69,6 @@ export const Icon = {
   UserSquare2,
   X,
   Kakao,
+  AvatarMale,
+  AvatarFemale,
 } as const;

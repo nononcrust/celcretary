@@ -28,7 +28,16 @@ const HeaderCloseButton = ({ ...props }: IconButtonProps) => {
   );
 };
 
+const HeaderAddButton = ({ ...props }: IconButtonProps) => {
+  return (
+    <IconButton size="large" {...props}>
+      <Icon.Plus />
+    </IconButton>
+  );
+};
+
 export const Header = Object.assign(HeaderImpl, {
   Previous: HeaderPreviousButton,
   Close: HeaderCloseButton,
+  Add: HeaderAddButton,
 });

@@ -15,7 +15,7 @@ interface PriorityBadgeProps extends React.ComponentPropsWithoutRef<"div"> {
 export const PriorityBadge = ({ className, children, priority, ...props }: PriorityBadgeProps) => {
   return (
     <Badge variant={badgeVariant[priority]} className={className} {...props}>
-      {PRIORITY_LABEL[priority]}
+      {children || PRIORITY_LABEL[priority]}
     </Badge>
   );
 };

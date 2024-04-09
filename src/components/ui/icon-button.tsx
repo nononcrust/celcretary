@@ -22,9 +22,11 @@ export interface IconButtonProps
 }
 
 export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ children, size, className, disabled, ...props }, ref) => {
+  ({ children, size, className, disabled, asChild, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+
     return (
-      <button
+      <Comp
         className={cn(iconButtonVariants({ size, className }))}
         ref={ref}
         type="button"
@@ -33,8 +35,8 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
         aria-disabled={disabled}
         {...props}
       >
-        <Slot className={cn(iconButtonVariants({ size }))}>{children}</Slot>
-      </button>
+        {children}
+      </Comp>
     );
   },
 );
