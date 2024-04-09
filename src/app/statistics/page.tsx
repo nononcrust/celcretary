@@ -8,7 +8,7 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import { Subtitle } from "@/components/ui/subtitle";
 import { Title } from "@/components/ui/title";
 import { cn } from "@/lib/utils";
-import { EVENT_TYPE, EVENT_TYPE_LABEL, EventType } from "@/services/shared";
+import { EVENT_TYPE_LABEL, EventType } from "@/services/event";
 import { useState } from "react";
 
 const AGES = ["10대", "20대", "30대", "40대", "50대", "60대", "70대", "80대", "90대 이상"];
@@ -103,9 +103,9 @@ export default function StatisticsPage() {
           </div>
           <p className="mt-3 text-[20px] font-semibold">총 {statistics.total.toLocaleString()}</p>
           <ProgressBar className="mt-2" progress={48} />
-          <div className="divide-accents-1 mt-4 divide-y">
-            <StatisticsCardItem eventType={EVENT_TYPE.WEDDING} percentage={80} amount={100000} />
-            <StatisticsCardItem eventType={EVENT_TYPE.BIRTHDAY} percentage={20} amount={50000} />
+          <div className="mt-4 divide-y divide-accents-1">
+            <StatisticsCardItem eventType={EventType.WEDDING} percentage={80} amount={100000} />
+            <StatisticsCardItem eventType={EventType.BIRTHDAY} percentage={20} amount={50000} />
           </div>
         </Card.Content>
       </Card>
@@ -123,9 +123,9 @@ const Stepper = ({ currentStep, totalSteps, className }: StepperProps) => {
   const percentage = (currentStep / totalSteps) * 100;
 
   return (
-    <div className={cn("bg-accents-1 h-1 w-full overflow-hidden rounded-full", className)}>
+    <div className={cn("h-1 w-full overflow-hidden rounded-full bg-accents-1", className)}>
       <div
-        className="bg-primary h-full rounded-l-full transition-all duration-300 ease-in-out"
+        className="h-full rounded-l-full bg-primary transition-all duration-300 ease-in-out"
         style={{ width: `${percentage}%` }}
       />
     </div>

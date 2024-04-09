@@ -1,12 +1,16 @@
 import { Icon } from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
-import React from "react";
+import { KAKAO_LOGIN_URL } from "@/services/kakao";
+import Link, { LinkProps } from "next/link";
 
-interface KakaoLoginButtonProps extends React.ComponentPropsWithoutRef<"button"> {}
+interface KakaoLoginButtonProps extends Omit<LinkProps, "href"> {
+  className?: string;
+}
 
 export const KakaoLoginButton = ({ className, ...props }: KakaoLoginButtonProps) => {
   return (
-    <button
+    <Link
+      href={KAKAO_LOGIN_URL}
       className={cn(
         "bg-kakao flex h-[56px] w-full items-center justify-center rounded-[8px] text-[18px] font-semibold text-accents-5",
         "focus-ring",
@@ -16,6 +20,6 @@ export const KakaoLoginButton = ({ className, ...props }: KakaoLoginButtonProps)
     >
       <Icon.Kakao className="mr-3" />
       카카오로 로그인
-    </button>
+    </Link>
   );
 };

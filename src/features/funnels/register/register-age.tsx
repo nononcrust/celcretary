@@ -23,7 +23,7 @@ export const RegisterAge = () => {
             <Form.Control>
               <Input
                 className="mt-[54px] w-[62px]"
-                allowNumberOnly
+                type="number"
                 endAdornment={<p>세</p>}
                 maxLength={2}
                 {...field}

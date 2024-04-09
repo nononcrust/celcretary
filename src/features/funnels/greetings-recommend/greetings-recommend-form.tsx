@@ -11,7 +11,7 @@ import { SectionTitle } from "@/components/ui/section-title";
 import { Title } from "@/components/ui/title";
 import { ROUTE } from "@/constants/route";
 import { useGreetingsRecommendFunnelContext } from "@/features/funnels/greetings-recommend/context";
-import { EVENT_TYPE_LABEL, EventType } from "@/services/shared";
+import { EVENT_TYPE_LABEL, EventType } from "@/services/event";
 import { useRouter } from "next/navigation";
 
 const DUMMY_RELATIONSHIP = ["친한 친구", "친구", "직장 동료", "상사", "가족", "기타 관계"];

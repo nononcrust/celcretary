@@ -1,22 +1,32 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn, formatDateInput, formatPhoneNumberInput } from "@/lib/utils";
 import React from "react";
 import { Icon } from "./icon";
 import { IconButton } from "./icon-button";
 
 interface InputProps extends React.ComponentPropsWithoutRef<"input"> {
   endAdornment?: React.ReactNode;
-  allowNumberOnly?: boolean;
   onClear?: () => void;
+  type?: "number" | "phone" | "date";
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, allowNumberOnly, value, onChange, onClear, endAdornment, ...props }, ref) => {
+  ({ className, value, onChange, onClear, endAdornment, type, ...props }, ref) => {
     const onInput: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-      if (allowNumberOnly) {
+      if (type === "number") {
         const numericOnly = event.target.value.replace(/[^0-9]/g, "");
         event.target.value = numericOnly;
+      }
+
+      if (type === "phone") {
+        const value = formatPhoneNumberInput(event.target.value);
+        event.target.value = value;
+      }
+
+      if (type === "date") {
+        const value = formatDateInput(event.target.value);
+        event.target.value = value;
       }
     };
 

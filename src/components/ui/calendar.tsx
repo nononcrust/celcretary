@@ -1,10 +1,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Event } from "@/services/event";
-import { PRIORITY } from "@/services/shared";
+import { Event, Priority } from "@/services/event";
 import { differenceInCalendarDays } from "date-fns";
 import { ko } from "date-fns/locale";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { createContext, useContext, useEffect, useRef } from "react";
 import { DateFormatter, DayPicker, DayProps, useDayRender } from "react-day-picker";
 
@@ -39,16 +39,16 @@ export const Calendar = ({
         formatters={{ formatCaption: formatCaption }}
         components={{
           Day: Day,
+          IconLeft: () => <ChevronLeft />,
+          IconRight: () => <ChevronRight />,
         }}
         classNames={{
           months: "w-full flex flex-col",
           caption: "flex justify-center relative items-center h-10",
           caption_label:
             "font-semibold absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center",
-          nav: "flex items-center rounded-md w-full h-full justify-between border-b",
-          nav_button: "rounded-full p-0.5 transition",
-          nav_button_previous: "!absolute left-2",
-          nav_button_next: "!absolute right-2",
+          nav: "flex items-center rounded-md w-full h-full justify-center border-b gap-32",
+          nav_button: "rounded-md transition focus-ring relative",
           table: "w-full",
           head_row: "flex w-full",
           head_cell:
@@ -153,9 +153,9 @@ const useCalendarContext = () => {
 };
 
 const BG_COLOR = {
-  [PRIORITY.CRUCIAL]: "bg-red",
-  [PRIORITY.IMPORTANT]: "bg-primary",
-  [PRIORITY.NORMAL]: "bg-green",
+  [Priority.CRUCIAL]: "bg-red",
+  [Priority.IMPORTANT]: "bg-primary",
+  [Priority.NORMAL]: "bg-green",
 } as const;
 
 interface EventIndicatorProps {

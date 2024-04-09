@@ -4,6 +4,7 @@ import { Form } from "@/components/ui/form";
 import { Subtitle } from "@/components/ui/subtitle";
 import { Title } from "@/components/ui/title";
 import { ToggleButtonGroup } from "@/components/ui/toggle-button-group";
+import { GENDER_LABEL } from "@/services/shared";
 import { useRegisterFunnelContext } from "./context";
 
 export const RegisterGender = () => {
@@ -28,8 +29,11 @@ export const RegisterGender = () => {
                 value={field.value}
                 onChange={field.onChange}
               >
-                <ToggleButtonGroup.Item value="male">남성</ToggleButtonGroup.Item>
-                <ToggleButtonGroup.Item value="female">여성</ToggleButtonGroup.Item>
+                {Object.entries(GENDER_LABEL).map(([value, label]) => (
+                  <ToggleButtonGroup.Item key={value} value={value}>
+                    {label}
+                  </ToggleButtonGroup.Item>
+                ))}
               </ToggleButtonGroup>
             </Form.Control>
           </Form.Item>

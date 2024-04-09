@@ -5,6 +5,7 @@ import { Form } from "@/components/ui/form";
 import { RegisterFunnelContextProvider } from "@/features/funnels/register/context";
 import { useFunnel } from "@/hooks/use-funnel";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { RegisterAge } from "./register-age";
@@ -24,6 +25,8 @@ const formSchema = z.object({
 export type FormSchema = z.infer<typeof formSchema>;
 
 export const RegisterFunnel = () => {
+  const router = useRouter();
+
   const funnel = useFunnel(STEPS);
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),

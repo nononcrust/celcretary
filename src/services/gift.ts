@@ -1,5 +1,6 @@
-import { DateString, EventType, api } from "@/services/shared";
+import { DateString, api } from "@/services/shared";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { EventType } from "./event";
 
 export type Gift = {
   id: number;

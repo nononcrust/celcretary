@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { CheckIndicator } from "@/components/ui/check-indicator";
 import { Icon } from "@/components/ui/icon";
 import { IconButton } from "@/components/ui/icon-button";
-import { Priority } from "@/services/shared";
+import { Priority } from "@/services/event";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import Link from "next/link";
@@ -26,7 +26,7 @@ export const EventCard = ({ id, checked, name, priority, date, onChange }: Event
             <CheckIndicator className="mr-2 mt-1" checked={checked} />
             <div className="flex w-full flex-col">
               <div className="flex items-center">
-                <p className="text-accents-5 mr-[10px] text-[32px] font-bold leading-none">D-5</p>
+                <p className="mr-[10px] text-[32px] font-bold leading-none text-accents-5">D-5</p>
                 <PriorityBadge priority={priority} />
               </div>
               <div className="flex w-full">

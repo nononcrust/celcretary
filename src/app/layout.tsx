@@ -45,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={pretendard.variable}>
-      <body className="max-w-main bg-accents-0 mx-auto">
+      <body className="mx-auto max-w-main bg-accents-0">
         <Providers>
           <Layout>{children}</Layout>
         </Providers>

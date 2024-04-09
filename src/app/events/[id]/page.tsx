@@ -11,8 +11,7 @@ import { SectionTitle } from "@/components/ui/section-title";
 import { Title } from "@/components/ui/title";
 import { ROUTE } from "@/constants/route";
 import { getDaysLeft } from "@/lib/date";
-import { Event } from "@/services/event";
-import { EVENT_TYPE, EVENT_TYPE_LABEL, PRIORITY } from "@/services/shared";
+import { EVENT_TYPE_LABEL, Event, EventType, Priority } from "@/services/event";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { useParams, useRouter } from "next/navigation";
@@ -20,13 +19,12 @@ import { useParams, useRouter } from "next/navigation";
 const DUMMY_RELATIONSHIP = "친한친구";
 
 const DUMMY_EVENT: Event = {
-  id: 1,
+  id: "1",
+  friendId: "1",
   name: "김밤비 결혼식",
-  priority: PRIORITY.CRUCIAL,
+  priority: Priority.CRUCIAL,
   scheduledAt: new Date().toISOString(),
-  type: EVENT_TYPE.WEDDING,
-  expectedAmount: 100000,
-  recommendedGreetings: "검은머리 파뿌리 될때까지 행복하게\n잘 살아, 축하해!",
+  type: EventType.WEDDING,
 };
 
 export default function EventDetailPage() {
@@ -75,7 +73,7 @@ export default function EventDetailPage() {
           <ChatBubble side="left" label="새로운 인생을 시작하는 친구에게," variant="primary">
             <div className="flex gap-1">
               <Icon.Files className="w-5" />
-              {event.recommendedGreetings}
+              {'"검은머리 파뿌리 될때까지 행복하게\n잘 살아, 축하해!"'}
             </div>
           </ChatBubble>
         </div>

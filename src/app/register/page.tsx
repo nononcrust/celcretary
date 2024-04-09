@@ -1,5 +1,5 @@
 import { RegisterFunnel } from "@/features/funnels/register/funnel";
 
-export default function RegisterPage() {
+export default async function RegisterPage() {
   return <RegisterFunnel />;
 }

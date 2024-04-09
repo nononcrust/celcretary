@@ -12,7 +12,7 @@ import { EventAddOverview } from "@/features/funnels/event-add/event-add-overvie
 import { EventAddPriority } from "@/features/funnels/event-add/event-add-priority";
 import { useFunnel } from "@/hooks/use-funnel";
 import { cn } from "@/lib/utils";
-import { PRIORITY } from "@/services/shared";
+import { Priority } from "@/services/event";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -24,7 +24,7 @@ const STEPS = ["type", "name", "date", "friend", "priority", "overview", "comple
 const formSchema = z.object({
   type: z.string().min(1),
   name: z.string().min(1),
-  priority: z.enum([Object.values(PRIORITY)[0], ...Object.values(PRIORITY).slice(1), ""]),
+  priority: z.enum([Object.values(Priority)[0], ...Object.values(Priority).slice(1), ""]),
   date: z.date(),
   time: z.string().min(1),
 });
@@ -51,13 +51,13 @@ export const EventAddFunnel = () => {
 
   return (
     <EventAddFunnelContextProvider funnel={funnel} form={form}>
-      <div className="px-4">
+      <div className="flex flex-1 flex-col px-4">
         <Header className={cn(!funnel.canMoveToPrevious && "justify-end")}>
           {funnel.canMoveToPrevious && <Header.Previous onClick={funnel.previous} />}
           <Header.Close onClick={() => router.push(ROUTE.HOME)} />
         </Header>
         <Form {...form}>
-          <form onSubmit={onSubmit}>
+          <form className="flex flex-1 flex-col" onSubmit={onSubmit}>
             {funnel.current === "type" && <EventAddType />}
             {funnel.current === "name" && <EventAddName />}
             {funnel.current === "date" && <EventAddDate />}

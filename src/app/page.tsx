@@ -13,9 +13,8 @@ import { useCalendar } from "@/hooks/use-calendar";
 import { useCheckboxGroup } from "@/hooks/use-checkbox-group";
 import { isIn10DaysFromNow } from "@/lib/date";
 import { useCalenderItemList } from "@/services/calender";
-import { Event, useDeleteEvent } from "@/services/event";
+import { Event, EventType, Priority, useDeleteEvent } from "@/services/event";
 import { Reminder } from "@/services/reminder";
-import { EVENT_TYPE, PRIORITY } from "@/services/shared";
 import { format, isSameDay } from "date-fns";
 import { ko } from "date-fns/locale";
 
@@ -23,50 +22,47 @@ const DUMMY_REMINDERS: Reminder[] = [
   {
     id: 1,
     name: "김밤비 결혼식",
-    priority: PRIORITY.CRUCIAL,
+    priority: Priority.CRUCIAL,
     scheduledAt: new Date().toISOString(),
   },
   {
     id: 2,
     name: "김밤비 결혼식",
-    priority: PRIORITY.CRUCIAL,
+    priority: Priority.CRUCIAL,
     scheduledAt: new Date().toISOString(),
   },
   {
     id: 3,
     name: "김밤비 결혼식",
-    priority: PRIORITY.CRUCIAL,
+    priority: Priority.CRUCIAL,
     scheduledAt: new Date().toISOString(),
   },
 ];
 
 const DUMMY_EVENTS: Event[] = [
   {
-    id: 1,
-    expectedAmount: 100000,
+    id: "1",
+    friendId: "1",
     name: "김밤비 결혼식",
-    priority: PRIORITY.CRUCIAL,
+    priority: Priority.CRUCIAL,
     scheduledAt: new Date().toISOString(),
-    recommendedGreetings: "축하합니다!",
-    type: EVENT_TYPE.WEDDING,
+    type: EventType.WEDDING,
   },
   {
-    id: 2,
-    expectedAmount: 100000,
+    id: "2",
+    friendId: "2",
     name: "김밤비 결혼식",
-    priority: PRIORITY.IMPORTANT,
+    priority: Priority.CRUCIAL,
     scheduledAt: new Date().toISOString(),
-    recommendedGreetings: "축하합니다!",
-    type: EVENT_TYPE.WEDDING,
+    type: EventType.WEDDING,
   },
   {
-    id: 3,
-    expectedAmount: 100000,
+    id: "3",
+    friendId: "3",
     name: "김밤비 결혼식",
-    priority: PRIORITY.NORMAL,
+    priority: Priority.CRUCIAL,
     scheduledAt: new Date().toISOString(),
-    recommendedGreetings: "축하합니다!",
-    type: EVENT_TYPE.WEDDING,
+    type: EventType.WEDDING,
   },
 ];
 
@@ -119,7 +115,7 @@ export default function HomePage() {
       <div className="mt-[72px] flex items-center justify-between">
         <Title>
           경조사 리마인더
-          <span className="text-primary ml-3">{reminderCheckGroup.checkedItems.length || ""}</span>
+          <span className="ml-3 text-primary">{reminderCheckGroup.checkedItems.length || ""}</span>
         </Title>
         {reminderCheckGroup.checkedItems.length > 0 && (
           <IconButton onClick={onReminderDelete}>

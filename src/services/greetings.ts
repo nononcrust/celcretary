@@ -1,6 +1,6 @@
-import { AgeGroup, EventType, Gender, Occupation, Priority, Relationship } from "@/services/shared";
 import { useQuery } from "@tanstack/react-query";
-import { api } from "./shared";
+import { EventType, Priority } from "./event";
+import { AgeGroup, Gender, Occupation, Relationship, api } from "./shared";
 
 const ENDPOINT = "/greetings";
 

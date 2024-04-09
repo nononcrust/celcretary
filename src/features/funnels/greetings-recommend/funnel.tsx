@@ -4,7 +4,7 @@ import { GreetingsRecommendFunnelContextProvider } from "@/features/funnels/gree
 import { GreetingsRecommendForm } from "@/features/funnels/greetings-recommend/greetings-recommend-form";
 import { GreetingsRecommendResult } from "@/features/funnels/greetings-recommend/greetings-recommend-result";
 import { useFunnel } from "@/hooks/use-funnel";
-import { EventType } from "@/services/shared";
+import { EventType } from "@/services/event";
 import { useState } from "react";
 
 const STEPS = ["form", "result"] as const;

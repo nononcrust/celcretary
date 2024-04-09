@@ -1,5 +1,6 @@
-import { EVENT_TYPE, EventType, Priority, api } from "@/services/shared";
+import { api } from "@/services/shared";
 import { useQuery } from "@tanstack/react-query";
+import { EventType, Priority } from "./event";
 
 export type ExpenseStatisticsByCategory = {
   // TODO: enum 으로 변경
@@ -24,8 +25,8 @@ export type ExpenseStatisticsByDate = {
   month: number;
   total: number;
   types: {
-    [EVENT_TYPE.BIRTHDAY]: number;
-    [EVENT_TYPE.WEDDING]: number;
+    [EventType.BIRTHDAY]: number;
+    [EventType.WEDDING]: number;
   };
 };
 

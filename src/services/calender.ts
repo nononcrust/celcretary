@@ -1,5 +1,6 @@
-import { Priority, TimeString, api } from "@/services/shared";
+import { TimeString, api } from "@/services/shared";
 import { useQuery } from "@tanstack/react-query";
+import { Priority } from "./event";
 
 export type CalendarItem = {
   id: number;

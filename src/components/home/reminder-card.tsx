@@ -1,7 +1,7 @@
 import { PriorityBadge } from "@/components/shared/priority-badge";
 import { Card } from "@/components/ui/card";
 import { CheckIndicator } from "@/components/ui/check-indicator";
-import { Priority } from "@/services/shared";
+import { Priority } from "@/services/event";
 
 interface ReminderCardProps {
   id: string;
@@ -13,11 +13,11 @@ interface ReminderCardProps {
 
 export const ReminderCard = ({ id, checked, name, priority, onChange }: ReminderCardProps) => {
   return (
-    <button onClick={() => onChange(id)}>
+    <button className="focus-ring rounded-md" onClick={() => onChange(id)}>
       <Card>
         <Card.Content className="flex items-center p-[14px]">
           <CheckIndicator className="mr-2" checked={checked} />
-          <p className="text-accents-5 mr-3 font-medium">{name}</p>
+          <p className="mr-3 font-medium text-accents-5">{name}</p>
           <PriorityBadge priority={priority} />
         </Card.Content>
       </Card>

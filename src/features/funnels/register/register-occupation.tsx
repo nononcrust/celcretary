@@ -4,20 +4,11 @@ import { Form } from "@/components/ui/form";
 import { Subtitle } from "@/components/ui/subtitle";
 import { Title } from "@/components/ui/title";
 import { ToggleButtonGroup } from "@/components/ui/toggle-button-group";
+import { OCCUPATION_LABEL } from "@/services/shared";
 import { useRegisterFunnelContext } from "./context";
 
-const OCCUPATION = {
-  student: "학생",
-  "self-employed": "자영업",
-  employee: "회사원",
-  "civil-servant": "공무원",
-  unemployed: "무직",
-  freelancer: "프리랜서",
-  etc: "기타",
-} as const;
-
 export const RegisterOccupation = () => {
-  const { form, funnel } = useRegisterFunnelContext();
+  const { form } = useRegisterFunnelContext();
 
   const name = form.watch("name");
 
@@ -38,7 +29,7 @@ export const RegisterOccupation = () => {
                 value={field.value}
                 onChange={field.onChange}
               >
-                {Object.entries(OCCUPATION).map(([value, label]) => (
+                {Object.entries(OCCUPATION_LABEL).map(([value, label]) => (
                   <ToggleButtonGroup.Item key={value} value={value}>
                     {label}
                   </ToggleButtonGroup.Item>
@@ -49,8 +40,8 @@ export const RegisterOccupation = () => {
         )}
       />
       <CTAContainer>
-        <Button variant="primary" size="large" disabled={!canMoveToNext} onClick={funnel.next}>
-          다음
+        <Button type="submit" variant="primary" size="large" disabled={!canMoveToNext}>
+          가입하기
         </Button>
       </CTAContainer>
     </main>

@@ -1,7 +1,7 @@
 "use client";
 
 import { Funnel } from "@/hooks/use-funnel";
-import { EventType } from "@/services/shared";
+import { EventType } from "@/services/event";
 import { createContext, useContext } from "react";
 
 type GreetingsRecommendFunnelContextValue = {
